@@ -67,4 +67,4 @@ sudo chmod +x ~/demote-server
 
 echo -e "\n---- Completed Slave Configuration Successfully ----"
 echo -e "\n---- Go & Start Configuring PgBouncer Server ----"
-
+history
