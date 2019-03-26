@@ -16,14 +16,14 @@ SLAVE_IP="172.29.0.60"
 # Update Server
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
-sudo apt update
-sudo apt upgrade -yV
+sudo apt-get update
+sudo apt-get upgrade -y
 
 #--------------------------------------------------
 # Install PostgreSQL Server
 #--------------------------------------------------
 echo -e "\n---- Install PostgreSQL Server ----"
-sudo apt install postgresql-9.5 postgresql-9.5-repmgr postgresql-client-9.5 -yV
+sudo apt-get install postgresql-9.6 repmgr postgresql-client-9.6 -y
 
 echo -e "\n---- Copy RSA keys sent from Node1 ----"
 sudo chown postgres.postgres ~/authorized_keys ~/id_rsa.pub ~/id_rsa
@@ -39,7 +39,7 @@ node=2
 node_name=node2
 use_replication_slots=1
 conninfo='host=$SLAVE_IP user=repmgr dbname=repmgr'
-pg_bindir=/usr/lib/postgresql/9.5/bin" | sudo tee -a /etc/repmgr/repmgr.conf
+pg_bindir=/usr/lib/postgresql/9.6/bin" | sudo tee -a /etc/repmgr/repmgr.conf
 
 echo -e "\n---- Clone Master to Slave ----"
 sudo su - postgres -c "ssh-keyscan -H $MASTER_IP >> ~/.ssh/known_hosts"
