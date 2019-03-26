@@ -31,13 +31,13 @@ echo -e "\n---- Install PostgreSQL Server ----"
 sudo apt-get install postgresql-9.6 repmgr postgresql-client-9.6 sshpass -y
 
 echo -e "\n---- Configure password-less SSH ----"
-sudo su - postgres -c "ssh-keygen -f /home/vagrant/.ssh/id_rsa -t rsa -N ''"
+sudo su - postgres -c "ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''"
 
 echo -e "\n---- Copy RSA keys to Node2 ----"
-sudo su - postgres -c "cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys"
-sudo su - postgres -c "chmod go-rwx /home/vagrant/.ssh/*"
-sudo su - postgres -c "ssh-keyscan -H $SLAVE_IP >> /home/vagrant/.ssh/known_hosts"
-sudo su - postgres -c "sshpass -p $SLAVE_PASS scp /home/vagrant/.ssh/id_rsa.pub /home/vagrant/.ssh/id_rsa /home/vagrant/.ssh/authorized_keys $SLAVE_USER@$SLAVE_IP:"
+sudo su - postgres -c "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys"
+sudo su - postgres -c "chmod go-rwx ~/.ssh/*"
+sudo su - postgres -c "ssh-keyscan -H $SLAVE_IP >> ~/.ssh/known_hosts"
+sudo su - postgres -c "sshpass -p $SLAVE_PASS scp ~/.ssh/id_rsa.pub ~/.ssh/id_rsa ~/.ssh/authorized_keys $SLAVE_USER@$SLAVE_IP:"
 
 echo -e "\n---- Configure repmgr User & Database ----"
 sudo su - postgres -c "createuser -s repmgr" 2> /dev/null || true
