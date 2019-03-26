@@ -11,21 +11,21 @@
 
 MASTER_IP="172.29.0.50"
 SLAVE_IP="172.29.0.60"
-ODOO_DB_USER="odoo"
-ODOO_DB_PASS="odoo"
+ODOO_DB_USER="odoo1"
+ODOO_DB_PASS="odoo1"
 
 #--------------------------------------------------
 # Update Server
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
-sudo apt update
-sudo apt upgrade -yV
+sudo apt-get update
+sudo apt-get upgrade -y
 
 #--------------------------------------------------
 # Install PgBouncer
 #--------------------------------------------------
 echo -e "\n---- Install PgBouncer ----"
-sudo apt install postgresql-client pgbouncer -yV
+sudo apt-get install postgresql-client-9.6 pgbouncer -y
 
 echo -e "\n---- Configure PgBouncer ----"
 sudo sed -i "s/;\* = host=testserver/* = host=$MASTER_IP/g" /etc/pgbouncer/pgbouncer.ini
