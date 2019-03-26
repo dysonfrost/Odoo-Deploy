@@ -13,8 +13,8 @@ ODOO_DB_USER="odoo1"
 ODOO_DB_PASS="odoo1"
 MASTER_IP="172.29.0.50"
 SLAVE_IP="172.29.0.60"
-SLAVE_USER="odoo2"
-SLAVE_PASS="odoo2"
+SLAVE_USER="vagrant"
+SLAVE_PASS="vagrant"
 NETWORK="172.29.0.0/24"
 
 #--------------------------------------------------

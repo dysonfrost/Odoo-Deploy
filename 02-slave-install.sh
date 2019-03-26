@@ -26,10 +26,10 @@ echo -e "\n---- Install PostgreSQL Server ----"
 sudo apt-get install postgresql-9.6 repmgr postgresql-client-9.6 -y
 
 echo -e "\n---- Copy RSA keys sent from Node1 ----"
-sudo chown postgres.postgres /home/vagrant/authorized_keys /home/vagrant/id_rsa.pub /home/vagrant/id_rsa
+sudo chown postgres.postgres /home/vagrant/.ssh/authorized_keys /home/vagrant/.ssh/id_rsa.pub /home/vagrant/.ssh/id_rsa
 sudo mkdir -p ~postgres/.ssh
 sudo chown postgres.postgres ~postgres/.ssh
-sudo mv /home/vagrant/authorized_keys /home/vagrant/id_rsa.pub /home/vagrant/id_rsa ~postgres/.ssh
+sudo mv /home/vagrant/authorized_keys /home/vagrant/.ssh/id_rsa.pub /home/vagrant/.ssh/id_rsa ~postgres/.ssh
 sudo chmod -R go-rwx ~postgres/.ssh
 
 echo -e "\n---- Configure Replication Manager ----"
