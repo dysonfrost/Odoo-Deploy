@@ -11,7 +11,7 @@
 
 MASTER_IP="172.29.0.50"
 SLAVE_IP="172.29.0.60"
-
+NETWORK="172.29.0.0/24"
 #--------------------------------------------------
 # Update Server
 #--------------------------------------------------
@@ -40,6 +40,14 @@ node_name=node2
 use_replication_slots=1
 conninfo='host=$SLAVE_IP user=repmgr dbname=repmgr'
 pg_bindir=/usr/lib/postgresql/9.6/bin" | sudo tee -a /etc/repmgr/repmgr.conf
+
+echo -e "\n---- Configure PostgreSQL Replication Settings ----"
+sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /etc/postgresql/9.6/main/postgresql.conf
+sudo sed -i "s/#hot_standby = off/hot_standby = on/g" /etc/postgresql/9.6/main/postgresql.conf
+echo -e "\n---- Configure PostgreSQL Settings ----"
+echo -e "host'\t'repmgr'\t\t'repmgr'\t\t'$NETWORK'\t\t'trust
+host'\t'replication'\t\t'repmgr'\t\t'$NETWORK'\t\t'trust
+host'\t'all'\t\t'all'\t\t'$NETWORK'\t\t'trust" | sudo tee -a /etc/postgresql/9.6/main/pg_hba.conf
 
 echo -e "\n---- Clone Master to Slave ----"
 sudo su - postgres -c "ssh-keyscan -H $MASTER_IP >> ~/.ssh/known_hosts"
