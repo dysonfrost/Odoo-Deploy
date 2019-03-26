@@ -46,26 +46,26 @@ WKHTMLTOX_X32=https://downloads.wkhtmltopdf.org/0.12/0.12.1/wkhtmltox-0.12.1_lin
 # Update Server
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
-sudo apt update
-sudo apt upgrade -yV
+sudo apt-get update
+sudo apt-get upgrade -y
 
 #--------------------------------------------------
 # Install Dependencies
 #--------------------------------------------------
 echo -e "\n--- Installing Python 3 + pip3 --"
-sudo apt install python3 python3-pip -yV
+sudo apt-get install python3 python3-pip -y
 sudo -H pip3 install -U pip
 
 echo -e "\n---- Install tool packages ----"
-sudo apt install wget git gdebi -yV
-sudo apt install libsasl2-dev python-dev libldap2-dev libssl-dev -yV
-sudo apt install python-dev libxml2-dev libxslt1-dev zlib1g-dev -yV
-sudo apt install python3-suds -yV
+sudo apt-get install wget git gdebi -y
+sudo apt-get install libsasl2-dev python-dev libldap2-dev libssl-dev -y
+sudo apt-get install python-dev libxml2-dev libxslt1-dev zlib1g-dev -y
+sudo apt-get install python3-suds -y
 
 echo -e "\n--- Install less compiler"
-sudo apt install nodejs npm -yV
-sudo apt install node-clean-css -yV
-sudo apt install node-less -yV
+sudo apt-get install nodejs npm -y
+sudo apt-get install node-clean-css -y
+sudo apt-get install node-less -y
 sudo npm install -g less less-plugin-clean-css
 
 #--------------------------------------------------
@@ -139,7 +139,7 @@ echo -e "* Creating server config file"
 cat <<EOF > ~/${OE_CONFIG}.conf
 [options]
 ; This is the password that allows database operations:
-; admin_passwd = $OE_SUPERADMIN
+admin_passwd = $OE_SUPERADMIN
 db_host = $POSTGRES_SERVER
 db_port = $POSTGRES_PORT
 db_user = $POSTGRES_USER
@@ -153,7 +153,7 @@ limit_time_cpu = 600
 limit_time_real = 1200
 max_cron_threads = 1
 workers = 1
-;proxy_mode = True
+proxy_mode = True
 logfile = /var/log/$OE_USER/$OE_CONFIG.log
 EOF
 sudo mv ~/${OE_CONFIG}.conf /etc/${OE_CONFIG}.conf
