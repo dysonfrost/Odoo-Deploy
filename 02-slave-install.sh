@@ -29,7 +29,7 @@ echo -e "\n---- Copy RSA keys sent from Node1 ----"
 sudo chown postgres.postgres /home/vagrant/.ssh/authorized_keys /home/vagrant/.ssh/id_rsa.pub /home/vagrant/.ssh/id_rsa
 sudo mkdir -p ~postgres/.ssh
 sudo chown postgres.postgres ~postgres/.ssh
-sudo mv /home/vagrant/authorized_keys /home/vagrant/.ssh/id_rsa.pub /home/vagrant/.ssh/id_rsa ~postgres/.ssh
+sudo mv /home/vagrant/.ssh/authorized_keys /home/vagrant/.ssh/id_rsa.pub /home/vagrant/.ssh/id_rsa ~postgres/.ssh
 sudo chmod -R go-rwx ~postgres/.ssh
 
 echo -e "\n---- Configure Replication Manager ----"
