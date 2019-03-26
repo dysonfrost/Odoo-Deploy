@@ -1,14 +1,11 @@
 #!/bin/bash
 #####################################################################################################
-# Script for installing Odoo on Ubuntu 14.04, 15.04 and 16.04 (could be used for other version too)
-# Author: Mohamed Hammad
-# Inspired by: Yenthe Van Ginneken
 #----------------------------------------------------------------------------------------------------
 # This script will install Odoo on your Ubuntu 16.04 server. It can install multiple Odoo instances
 # in one Ubuntu because of the different xmlrpc_ports
 #-----------------------------------------------------------------------------------------------------
 # Make a new file:
-# sudo nano 02-odoo-install.sh
+# sudo vim 02-odoo-install.sh
 # Place this content in it and then make the file executable:
 # sudo chmod +x 02-odoo-install.sh
 # Execute the script to install Odoo:
@@ -40,7 +37,7 @@ OE_CONFIG="${OE_USER}-server"
 
 ###  WKHTMLTOPDF download links
 ## === Ubuntu Trusty x64 & x32 === (for other distributions please replace these two links,
-## in order to have correct version of wkhtmltox installed, for a danger note refer to 
+## in order to have correct version of wkhtmltox installed, for a danger note refer to
 ## https://www.odoo.com/documentation/8.0/setup/install.html#deb ):
 WKHTMLTOX_X64=https://downloads.wkhtmltopdf.org/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
 WKHTMLTOX_X32=https://downloads.wkhtmltopdf.org/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-i386.deb

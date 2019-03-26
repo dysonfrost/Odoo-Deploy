@@ -1,13 +1,10 @@
 #!/bin/bash
 #####################################################################################################
-# Script for installing Postgres on Ubuntu 14.04, 15.04 and 16.04 (could be used for other version too)
-# Author: Mohamed Hammad
-# Inspired by: Yenthe Van Ginneken
 #----------------------------------------------------------------------------------------------------
 # This script will install Postgres on your Ubuntu 16.04 server.
 #-----------------------------------------------------------------------------------------------------
 # Make a new file:
-# sudo nano 01-postgres-install.sh
+# sudo vim 01-postgres-install.sh
 # Place this content in it and then make the file executable:
 # sudo chmod +x 01-postgres-install.sh
 # Execute the script to install Postgres:
