@@ -37,7 +37,7 @@ echo -e "\n---- Copy RSA keys to Node2 ----"
 sudo su - postgres -c "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys"
 sudo su - postgres -c "chmod go-rwx ~/.ssh/*"
 sudo su - postgres -c "ssh-keyscan -H $SLAVE_IP >> ~/.ssh/known_hosts"
-sudo su - postgres -c "sshpass -p $SLAVE_PASS scp ~/.ssh/id_rsa.pub ~/.ssh/id_rsa ~/.ssh/authorized_keys $SLAVE_USER@$SLAVE_IP:"
+sudo su - postgres -c "sshpass -p $SLAVE_PASS scp ~/.ssh/id_rsa.pub ~/.ssh/id_rsa ~/.ssh/authorized_keys $SLAVE_USER@$SLAVE_IP:/home/vagrant/.ssh"
 
 echo -e "\n---- Configure repmgr User & Database ----"
 sudo su - postgres -c "createuser -s repmgr" 2> /dev/null || true
