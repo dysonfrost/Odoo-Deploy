@@ -57,13 +57,17 @@ sudo apt-get install python3 python3-pip -y
 sudo -H pip3 install -U pip
 
 echo -e "\n---- Install tool packages ----"
-sudo apt-get install wget git gdebi -y
-sudo apt-get install libsasl2-dev python-dev libldap2-dev libssl-dev -y
+sudo apt-get install wget curl git gdebi build-essential -y
+sudo apt-get install libpng-dev libsasl2-dev python-dev libldap2-dev libssl-dev -y
 sudo apt-get install python-dev libxml2-dev libxslt1-dev zlib1g-dev -y
 sudo apt-get install python3-suds -y
 
+echo -e "\n--- Install nodejs"
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
 echo -e "\n--- Install less compiler"
-sudo apt-get install nodejs npm -y
+#sudo apt-get install nodejs npm -y
 sudo apt-get install node-clean-css -y
 sudo apt-get install node-less -y
 sudo npm install -g less less-plugin-clean-css
@@ -79,7 +83,7 @@ if [ $INSTALL_WKHTMLTOPDF = "True" ]; then
   else
       _url=$WKHTMLTOX_X32
   fi
-  sudo wget $_url
+  sudo wget --quiet -O $_url
   sudo gdebi --n `basename $_url`
   sudo ln -s /usr/local/bin/wkhtmltopdf /usr/bin
   sudo ln -s /usr/local/bin/wkhtmltoimage /usr/bin

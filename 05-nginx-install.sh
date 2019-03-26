@@ -18,17 +18,17 @@ NGINX_CONFIG_PATH="/etc/nginx/sites-available/${NGINX_CONFIG}"
 # Update Server
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
-sudo apt update
-sudo apt dist-upgrade -yV
+sudo apt-get update
+sudo apt-get dist-upgrade -yV
 
 #--------------------------------------------------
 # Install certbot
 #--------------------------------------------------
 echo -e "\n---- Install certbot ----"
-sudo apt install software-properties-common
-sudo add-apt-repository ppa:certbot/certbot -y
-sudo apt update
-sudo apt install python-certbot-nginx -yV
+sudo apt-get install software-properties-common
+sudo add-apt-get-repository ppa:certbot/certbot -y
+sudo apt-get update
+sudo apt-get install python-certbot-nginx -yV
 
 #--------------------------------------------------
 # Create configuration file
