@@ -92,4 +92,3 @@ sudo chmod +x ~/demote-server
 
 echo -e "\n---- Completed Master Configuration Successfully ----"
 echo -e "\n---- Go & Start Configuring Slave Server ----"
-history

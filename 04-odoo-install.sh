@@ -17,8 +17,8 @@
 OE_USER="odoo"
 POSTGRES_SERVER="172.29.0.62"
 POSTGRES_PORT="6432"
-POSTGRES_USER="odoo"
-POSTGRES_PASS="odoo"
+POSTGRES_USER="odoo1"
+POSTGRES_PASS="odoo1"
 OE_HOME="/$OE_USER"
 OE_HOME_EXT="/$OE_USER/${OE_USER}-server"
 #The default port where this Odoo instance will run under (provided you use the command -c in the terminal)
@@ -257,6 +257,9 @@ sudo chown root: /etc/init.d/$OE_CONFIG
 
 echo -e "* Start Odoo on Startup"
 sudo update-rc.d $OE_CONFIG defaults
+
+echo -e "* Start Odoo Server"
+sudo service $OE_CONFIG start
 
 echo "-----------------------------------------------------------"
 echo "Done! The Odoo server is up and running. Specifications:"
