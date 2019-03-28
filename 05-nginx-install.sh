@@ -9,7 +9,8 @@
 ###################################################################
 
 OE_DOMAIN="odoo.mydomain.local *.odoo.mydomain.local"
-OE_HOST="192.168.122.10"
+OE_HOST1="192.168.122.64"
+OE_HOST2="192.168.122.65"
 OE_PORT="8069"
 NGINX_CONFIG="odoo"
 NGINX_CONFIG_PATH="/etc/nginx/sites-available/${NGINX_CONFIG}"
@@ -39,10 +40,12 @@ cat <<EOF > ~/${NGINX_CONFIG}
 upstream odoo {
         server $OE_HOST:$OE_PORT weight=1 fail_timeout=0;
         #server <SECOND-SERVER>:$OE_PORT weight=1 fail_timeout=0;
+        server $OE_HOST2:$OE_PORT weight=1 fail_timeout=0;
 }
 upstream odoochat {
         server $OE_HOST:8072 weight=1 fail_timeout=0;
         #server <SECOND-SERVER>:8072 weight=1 fail_timeout=0;
+        server $OE_HOST2:8072 weight=1 fail_timeout=0;
 }
 
 # http -> https
