@@ -9,7 +9,7 @@
 ###################################################################
 
 OE_DOMAIN="odoo.mydomain.local *.odoo.mydomain.local"
-OE_HOST="172.29.0.51"
+OE_HOST="192.168.122.10"
 OE_PORT="8069"
 NGINX_CONFIG="odoo"
 NGINX_CONFIG_PATH="/etc/nginx/sites-available/${NGINX_CONFIG}"

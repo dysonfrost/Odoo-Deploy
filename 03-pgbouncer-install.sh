@@ -9,8 +9,8 @@
 # sudo ./03-pgbouncer-install.sh
 #######################################################################################################
 
-MASTER_IP="172.29.0.50"
-SLAVE_IP="172.29.0.60"
+MASTER_IP="172.29.0.60"
+#SLAVE_IP="172.29.0.6"
 ODOO_DB_USER="odoo1"
 ODOO_DB_PASS="odoo1"
 
@@ -35,17 +35,17 @@ echo "admin_users = odoo" | sudo tee -a /etc/pgbouncer/pgbouncer.ini
 echo "\"$ODOO_DB_USER\" \"$ODOO_DB_PASS\"" | sudo tee -a /etc/pgbouncer/userlist.txt
 sudo service pgbouncer restart
 
-echo -e "\n---- Prepare Failover Scripts ----"
-cat <<EOF > ~/switch-node1
-#!/bin/bash
-sudo sed -i "s/\* = host=$SLAVE_IP/* = host=$MASTER_IP/g" /etc/pgbouncer/pgbouncer.ini
-sudo service pgbouncer restart
-EOF
-cat <<EOF > ~/switch-node2
-sudo sed -i "s/\* = host=$MASTER_IP/* = host=$SLAVE_IP/g" /etc/pgbouncer/pgbouncer.ini
-sudo service pgbouncer restart
-EOF
-sudo chmod +x ~/switch-node1
-sudo chmod +x ~/switch-node2
-
+#echo -e "\n---- Prepare Failover Scripts ----"
+#cat <<EOF > ~/switch-node1
+##!/bin/bash
+#sudo sed -i "s/\* = host=$SLAVE_IP/* = host=$MASTER_IP/g" /etc/pgbouncer/pgbouncer.ini
+#sudo service pgbouncer restart
+#EOF
+#cat <<EOF > ~/switch-node2
+#sudo sed -i "s/\* = host=$MASTER_IP/* = host=$SLAVE_IP/g" /etc/pgbouncer/pgbouncer.ini
+#sudo service pgbouncer restart
+#EOF
+#sudo chmod +x ~/switch-node1
+#sudo chmod +x ~/switch-node2
+#
 echo -e "\n---- Completed PgBouncer Installation Successfully ----"
