@@ -39,13 +39,13 @@ cat <<EOF > ~/${NGINX_CONFIG}
 #odoo server
 upstream odoo {
         #server <SECOND-SERVER>:$OE_PORT weight=1 fail_timeout=0;
-        server $OE_HOST1:$OE_POST weight=1 fail_timeout=0;
-        server $OE_HOST2:$OE_PORT weight=1 fail_timeout=0;
+        server 192.168.122.64:8069 weight=1 fail_timeout=0;
+        server 192.168.122.65:8069 weight=1 fail_timeout=0;
 }
 upstream odoochat {
         #server <SECOND-SERVER>:8072 weight=1 fail_timeout=0;
-        server $OE_HOST1:8072 weight=1 fail_timeout=0;
-        server $OE_HOST2:8072 weight=1 fail_timeout=0;
+        server 192.168.122.64:8072 weight=1 fail_timeout=0;
+        server 192.168.122.65:8072 weight=1 fail_timeout=0;
 }
 
 # http -> https
