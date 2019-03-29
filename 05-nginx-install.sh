@@ -38,12 +38,12 @@ echo -e "\n---- Create configuration file ----"
 cat <<EOF > ~/${NGINX_CONFIG}
 #odoo server
 upstream odoo {
-        server ${OE_HOST}:${OE_PORT} weight=1 fail_timeout=0;
+        server $OE_HOST1:$OE_PORT weight=1 fail_timeout=0;
         #server <SECOND-SERVER>:$OE_PORT weight=1 fail_timeout=0;
-        server ${OE_HOST2}:${OE_PORT} weight=1 fail_timeout=0;
+        server $OE_HOST2:$OE_PORT weight=1 fail_timeout=0;
 }
 upstream odoochat {
-        server $OE_HOST:8072 weight=1 fail_timeout=0;
+        server $OE_HOST1:8072 weight=1 fail_timeout=0;
         #server <SECOND-SERVER>:8072 weight=1 fail_timeout=0;
         server $OE_HOST2:8072 weight=1 fail_timeout=0;
 }
